@@ -1,26 +1,38 @@
 {
   "name": "electron-lessons",
+  "productName": "Electron tutorial app",
   "version": "1.0.0",
   "description": "A sample Electron (JS) project for Medium lessons.",
   "main": "app/index.js",
   "scripts": {
     "start": "electron .",
+    "build": "electron-packager . app --platform win32 --arch x64 --out dist/",
+    "setup": "electron-installer-windows --src –platform=win32-linux-x64 --dest dist/installers/",
     "sass:build": "node-sass app/scss -o app/css",
-    "sass:watch": "node-sass -w app/render/scss -o app/render/css"
+    "sass:watch": "node-sass -w app/render/scss -o app/render/css",
+    "package-mac": "electron-packager . --overwrite --asar=true --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",
+    "package-linux": "electron-packager . --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds",
+    "create-installer-mac": "electron-installer-dmg ./release-builds/Electron\\ tutorial\\ app-darwin-x64/Electron\\ tutorial\\ app.app electron-tutorial-app --out=release-builds --overwrite --icon=assets/icons/mac/icon.icns",
+    "create-installer-win": "node installers/windows/createinstaller.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/course-one/electron-lessons.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Neethu Prem",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/course-one/electron-lessons/issues"
   },
   "homepage": "https://github.com/course-one/electron-lessons#readme",
   "devDependencies": {
-    "electron": "^11.1.1"
+    "electron": "^11.5.0",
+    "electron-installer-windows": "^3.0.0",
+    "electron-packager": "^17.0.0",
+    "electron-winstaller": "^5.1.0",
+    "electron-wix-msi": "^4.0.0"
   },
   "dependencies": {
     "chokidar": "^3.4.3",

@@ -3,6 +3,7 @@ const { ipcRenderer } = require( 'electron' );
 
 // local dependencies
 const dom = require( './dom' );
+const outputDom = require('./dom')
 
 /*****************************/
 

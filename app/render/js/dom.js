@@ -1,6 +1,10 @@
 const { ipcRenderer } = require( 'electron' );
 
+
+
 // copy file
+// if (typeof window !== "undefined") {
+
 window.copyFile = function ( event, itemId ) {
     event.preventDefault();
 
@@ -34,6 +38,7 @@ window.openFile = function ( itemId ) {
     ipcRenderer.send( 'app:on-file-open', { id: itemId, filepath } );
 };
 
+
 exports.displayFiles = ( files = [] ) => {
     const fileListElem = document.getElementById( 'filelist' );
     fileListElem.innerHTML = '';
@@ -57,3 +62,5 @@ exports.displayFiles = ( files = [] ) => {
         fileListElem.appendChild( itemDomElem );
     } );
 };
+
+

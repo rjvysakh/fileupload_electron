@@ -3,9 +3,16 @@ const path = require( 'path' );
 const { PythonShell } = require("python-shell");
 
 
+
+
+
+
 // local dependencies
 const io = require( './main/io' );
-``
+const { displayOutput } = require('./render/js/outputDom');
+// const renderer = require( './render/js/renderer' );
+
+
 // open a window
 const openWindow = () => {
     const win = new BrowserWindow( {
@@ -108,5 +115,13 @@ ipcMain.handle( 'app:on-run-python', ( event ) => {
       throw err;
     }
     console.log("finished");
+    // ipcRenderer.send( 'app:show-out', { } );
+    // renderer.displayOut(true,false,true);
+    displayOutput(true,false,true);
+    if( BrowserWindow.getAllWindows().length === 0 ) {
+        openWindow();
+    }
   });
 } );
+
+
