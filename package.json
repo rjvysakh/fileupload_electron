@@ -37,6 +37,7 @@
   "dependencies": {
     "chokidar": "^3.4.3",
     "drag-drop": "^6.1.0",
+    "electron-reload": "^2.0.0-alpha.1",
     "fs-extra": "^9.0.1",
     "open": "^7.3.0",
     "python-shell": "^3.0.1"
